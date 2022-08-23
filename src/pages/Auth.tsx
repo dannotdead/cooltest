@@ -1,6 +1,8 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import Form from '../components/Form';
+import {Paths, Token} from '../config/enum';
+import {useNavigate} from 'react-router-dom';
 
 const FormContainer = styled.div`
 	display: flex;
@@ -10,6 +12,16 @@ const FormContainer = styled.div`
 `
 
 const Auth = () => {
+	const navigate = useNavigate()
+
+	useEffect(() => {
+		const checkToken = JSON.parse(localStorage.getItem(Token.Key) || '{}')
+
+		if (checkToken.token) {
+			navigate(Paths.Profile)
+		}
+	}, [])
+
 	return (
 		<FormContainer>
 			<Form />

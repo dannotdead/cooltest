@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {useForm} from 'react-hook-form';
 import styled from 'styled-components';
+import {useNavigate} from 'react-router-dom';
+import {Paths, Token} from '../config/enum';
 
-type FormData = {
+export type FormData = {
 	login: string,
-	password: string,
-	rememberPassword: boolean
+	password: string
 }
 
 type CheckboxBody = {
@@ -94,6 +95,35 @@ const InputSubmit = styled.input`
   color: white;
   cursor: pointer;
   border-radius: 8px;
+	
+	&:disabled {
+    background-color: #99A9FF;
+    cursor: default;
+	}
+`
+
+const ServerErrorBody = styled.span`
+  display: flex;
+	align-items: center;
+  padding: 20px;
+  background-color: #F5E9E9;
+  border: 1px solid #E26F6F;
+  border-radius: 8px;
+	font-size: 14px;
+	margin-top: 10px;
+	
+	&::before {
+		content: '!';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+		width: 20px;
+    height: 20px;
+    background-color: #FFC8C8;
+    color: #EE6565;
+		border-radius: 50%;
+		margin-right: 14px;
+  }
 `
 
 const Form = () => {
@@ -106,20 +136,46 @@ const Form = () => {
 	} = useForm<FormData>({
 		mode: 'onBlur'
 	})
+	const navigate = useNavigate()
 
 	const [checked, setChecked] = useState(false)
+	const [errorMessageServer, setErrorMessageServer] = useState('')
+	const [isLoading, setIsLoading] = useState(false)
 
 	const handleCheckbox = () => {
 		setChecked(prevState => !prevState)
 	}
 
 	const onSubmit = handleSubmit(data => {
-		console.log(checked)
-		console.log(data)
+		setIsLoading(true)
+
+		setTimeout(() => {
+			if (data.login !== 'steve.jobs@example.com') {
+				setErrorMessageServer(`Пользователя ${data.login} не существует`)
+			} else if (data.password !== 'password') {
+				setErrorMessageServer('Неверный пароль')
+			} else {
+				setErrorMessageServer('')
+				navigate(Paths.Profile, {
+					state: data
+				})
+
+				if (checked) {
+					localStorage.setItem(Token.Key, JSON.stringify({
+						token: Token.Value,
+						login: data.login
+					}))
+				}
+			}
+
+			setIsLoading(false)
+		}, 1500)
 	})
 
 	return (
 		<FormBody onSubmit={onSubmit}>
+			{errorMessageServer && <ServerErrorBody>{errorMessageServer}</ServerErrorBody>}
+
 			<Label>Логин</Label>
 			<Input
 				borderColor={errors.login?.message ? '#E26F6F' : 'transparent'}
@@ -143,7 +199,7 @@ const Form = () => {
 				<CheckboxLabel onClick={() => handleCheckbox()}>Запомнить пароль</CheckboxLabel>
 			</CheckboxContainer>
 
-			<InputSubmit type='submit' value='Войти' />
+			<InputSubmit type='submit' value='Войти' disabled={isLoading} />
 		</FormBody>
 	);
 };
