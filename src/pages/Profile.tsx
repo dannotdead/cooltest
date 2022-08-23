@@ -14,7 +14,7 @@ const ProfileBody = styled.div`
 
 const UserName = styled.div`
 	text-align: center;
-  font-size: 40px;
+	font-size: 40px;
 	
 	span {
 		font-weight: 700;
@@ -28,9 +28,9 @@ const LogOutButton = styled.input`
 	padding: 20px 72px;
 	font-size: 18px;
 	font-weight: 700;
-  background-color: #F5F5F5;
-  border-radius: 8px;
-  cursor: pointer;
+	background-color: #F5F5F5;
+	border-radius: 8px;
+	cursor: pointer;
 `
 
 const Profile = () => {

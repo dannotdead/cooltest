@@ -2,15 +2,15 @@ import React from 'react';
 import styled from 'styled-components';
 
 const NavBarBody = styled.div`
-  margin-top: 40px;
-  text-align: center;
+	margin-top: 40px;
+	text-align: center;
 `
 
 const NavBarTextLogo = styled.span`
-  text-transform: uppercase;
-  font-weight: 700;
-  font-size: 64px;
-  line-height: 78px;
+	text-transform: uppercase;
+	font-weight: 700;
+	font-size: 64px;
+	line-height: 78px;
 `
 
 const NavBar = () => {

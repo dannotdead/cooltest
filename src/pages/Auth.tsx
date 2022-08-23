@@ -6,8 +6,8 @@ import {useNavigate} from 'react-router-dom';
 
 const FormContainer = styled.div`
 	display: flex;
-  align-items: center;
-  justify-content: center;
+	align-items: center;
+	justify-content: center;
 	height: 80vh;
 `
 

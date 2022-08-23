@@ -20,7 +20,7 @@ type InputTheme = {
 const FormBody = styled.form`
 	display: flex;
 	flex-direction: column;
-  width: 640px;
+	width: 640px;
 	margin: auto;
 	padding: 20px;
 `
@@ -32,51 +32,51 @@ const Label = styled.label`
 `
 
 const Input = styled.input<InputTheme>`
-  outline: none;
-  padding: 20px;
-  font-size: 16px;
-  background-color: #F5F5F5;
-  color: #232323;
-  border-radius: 8px;
-  border: 1px solid ${props => props.borderColor};
+	outline: none;
+	padding: 20px;
+	font-size: 16px;
+	background-color: #F5F5F5;
+	color: #232323;
+	border-radius: 8px;
+	border: 1px solid ${props => props.borderColor};
 `
 
 const ErrorMessage = styled.span`
-  margin-top: 8px;
-  font-size: 14px;
-  color: #E26F6F;
+	margin-top: 8px;
+	font-size: 14px;
+	color: #E26F6F;
 `
 
 const CheckboxContainer = styled.div`
-  display: flex;
+	display: flex;
 	align-items: center;
 	margin-top: 20px;
 `
 
 const CheckboxBody = styled.div<CheckboxBody>`
-  display: flex;
-  cursor: pointer;
+	display: flex;
+	cursor: pointer;
 	margin-right: 14px;
 	
 	&::before {
-    content: '';
-    height: 20px;
-    width: 20px;
-    background-color: transparent;
-    border-radius: 4px;
-    border: 1px solid black;
+		content: '';
+		height: 20px;
+		width: 20px;
+		background-color: transparent;
+		border-radius: 4px;
+		border: 1px solid black;
 	}
 
-  &::after {
-    content: '';
-    position: absolute;
-    width: 14px;
-    height: 14px;
-    margin: 4px;
-    border-radius: 2px;
-    background-color: #4A67FF;
-	  visibility: ${props => props.checked ? 'visible' : 'hidden'};
-  }
+	&::after {
+		content: '';
+		position: absolute;
+		width: 14px;
+		height: 14px;
+		margin: 4px;
+		border-radius: 2px;
+		background-color: #4A67FF;
+		visibility: ${props => props.checked ? 'visible' : 'hidden'};
+	}
 `
 
 const CheckboxLabel = styled.label`
@@ -87,43 +87,43 @@ const CheckboxLabel = styled.label`
 const InputSubmit = styled.input`
 	outline: none;
 	border: none;
-  padding: 20px;
-  margin-top: 40px;
-  font-size: 18px;
-  font-weight: 700;
-  background-color: #4A67FF;
-  color: white;
-  cursor: pointer;
-  border-radius: 8px;
+	padding: 20px;
+	margin-top: 40px;
+	font-size: 18px;
+	font-weight: 700;
+	background-color: #4A67FF;
+	color: white;
+	cursor: pointer;
+	border-radius: 8px;
 	
 	&:disabled {
-    background-color: #99A9FF;
-    cursor: default;
+		background-color: #99A9FF;
+		cursor: default;
 	}
 `
 
 const ServerErrorBody = styled.span`
-  display: flex;
+	display: flex;
 	align-items: center;
-  padding: 20px;
-  background-color: #F5E9E9;
-  border: 1px solid #E26F6F;
-  border-radius: 8px;
+	padding: 20px;
+	background-color: #F5E9E9;
+	border: 1px solid #E26F6F;
+	border-radius: 8px;
 	font-size: 14px;
 	margin-top: 10px;
 	
 	&::before {
 		content: '!';
-    display: flex;
-    justify-content: center;
-    align-items: center;
+		display: flex;
+		justify-content: center;
+		align-items: center;
 		width: 20px;
-    height: 20px;
-    background-color: #FFC8C8;
-    color: #EE6565;
+		height: 20px;
+		background-color: #FFC8C8;
+		color: #EE6565;
 		border-radius: 50%;
 		margin-right: 14px;
-  }
+	}
 `
 
 const Form = () => {
